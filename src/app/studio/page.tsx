@@ -221,11 +221,19 @@ export default function StudioPage() {
 
         {/* Error */}
         {error && (
-          <div className="mt-6 flex items-start gap-3 rounded-xl border border-rose-500/30 bg-rose-500/10 p-4 text-sm text-rose-200">
+          <div className="mt-6 flex items-start gap-3 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-sm text-amber-100">
             <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
             <div>
-              <div className="font-medium">Couldn&apos;t resolve that link</div>
-              <div className="mt-1 text-rose-200/70">{error}</div>
+              <div className="font-medium">Direct download unavailable</div>
+              <div className="mt-1 text-amber-100/80">{error}</div>
+              <a
+                href={url}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-3 inline-block rounded-full border border-amber-300/30 px-3 py-1 text-xs text-amber-100 hover:border-amber-300/60"
+              >
+                Open original link ↗
+              </a>
             </div>
           </div>
         )}
