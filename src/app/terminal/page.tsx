@@ -204,14 +204,6 @@ export default function TerminalPage() {
                     </div>
                   ) : (
                     <div className="space-y-1.5 pl-4">
-                      {m.thinking && (
-                        <div className="rounded-md border border-white/5 bg-white/[0.02] px-3 py-2 text-[11px] italic text-white/40">
-                          <span className="not-italic text-white/30">
-                            ⏚ thinking ·{" "}
-                          </span>
-                          {m.thinking}
-                        </div>
-                      )}
                       <div className="whitespace-pre-wrap text-emerald-100/90">
                         {m.content || (
                           <span className="animate-pulse text-emerald-300/50">
