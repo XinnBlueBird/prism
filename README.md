@@ -4,10 +4,10 @@
 
 # Prism
 
-### *Refract any thought into clarity.*
+### *The AI workspace for builders.*
 
-A reasoning canvas powered by **MiMo V2.5 Pro**. Ten lenses. One engine.
-Turn any input — a wallet address, a research paper, a vague idea — into structured insight.
+A reasoning workspace for solo founders, indie hackers, and small teams.
+Plan, build, ship, and decide — with **15 specialized AI lenses** powered by **MiMo V2.5 Pro**.
 
 [![Built with Next.js](https://img.shields.io/badge/Built%20with-Next.js%2016-black?style=flat-square)](https://nextjs.org)
 [![Powered by MiMo](https://img.shields.io/badge/Powered%20by-MiMo%20V2.5%20Pro-a78bfa?style=flat-square)](https://platform.xiaomimimo.com)
@@ -18,46 +18,87 @@ Turn any input — a wallet address, a research paper, a vague idea — into str
 
 ---
 
-## ✨ What is Prism?
+## What is Prism?
 
-Most AI tools are chat boxes. Prism isn't.
+Most AI tools are chat boxes. Prism is a **reasoning workspace**.
 
-Prism is a **reasoning canvas**: pick a *lens*, drop your input, and watch MiMo V2.5 Pro refract it into a structured, domain-specific analysis. Same engine, ten different cognitive frames — built so you can see breadth of reasoning, not just chat completion.
+Pick a lens, drop your input, and watch MiMo V2.5 Pro produce a structured, ready-to-use artifact — a PRD, an RFC, a task tree, a launch thread, a premortem analysis. Not a wall of text. A deliverable.
 
-> **Ten lenses. One engine. Infinite use cases.**
+Every output streams a visible **reasoning trace** so you can see *how* the model thinks, not just *what* it says.
 
-## 🔮 The Lenses
+> **15 lenses. One engine. Four workflow stages. Every output ready to ship.**
 
-| Lens | Status | What it does |
-|------|:------:|--------------|
-| 🪙 **Chain Lens** | ✅ Live | Wallet/contract → behavioral biography, risk profile, network map |
-| ⚔️ **Debate Lens** | ✅ Live | Any claim → Steel-man, Devil's Advocate, Skeptic, Supporter |
-| 📐 **Spec Lens** | ✅ Live | Plain-English idea → PRD, architecture, API schema, tickets |
-| 🧩 **Task Lens** | ✅ Live | Vague goal → recursive task tree, dependencies, daily plan |
-| 🎯 **Alpha Lens** | 🔜 Soon | Topic → emerging narrative + momentum signals |
-| 📜 **Thread Lens** | 🔜 Soon | URL/PDF/YouTube → viral-shaped X thread |
-| 🏛️ **Legacy Lens** | 🔜 Soon | Legacy code → *why* it exists + refactor plan |
-| 📄 **Paper Lens** | 🔜 Soon | arXiv paper → 5-level explainer + critique |
-| 🔄 **Pivot Lens** | 🔜 Soon | Business idea → market scan + 5 pivots + kill criteria |
-| 🌙 **Dream Lens** | 🔜 Soon | Free-form thought → symbolism + pattern map |
+## Features
 
-## 🧠 Why MiMo V2.5 Pro?
+### Lenses — 15 specialized AI tools
 
-Prism is intentionally designed to **showcase deep reasoning**, not surface-level chat completion. Every lens forces multi-step structured reasoning across a different domain — on-chain analysis, adversarial debate, system design, recursive decomposition.
+Organized into four workflow stages:
 
-That breadth × depth is exactly where MiMo V2.5 Pro shines: it streams a visible **reasoning trace** before producing the final structured output, so users see *how* the model thinks, not just *what* it says.
+**Plan** — Turn vague ideas into actionable specs.
+| Lens | What it does |
+|------|-------------|
+| Spec | Plain-English idea into PRD, architecture, API schema, and tickets |
+| Task | Vague goal into recursive task tree, dependencies, and daily plan |
+| Roadmap | Features into quarter-by-quarter roadmap with milestones |
+| OKR | Objectives into measurable KRs and anti-goals |
 
-## 🛠 Tech Stack
+**Build** — Reason through code and engineering choices.
+| Lens | What it does |
+|------|-------------|
+| RFC | Tech proposal into motivation, alternatives, and trade-offs |
+| Legacy | Legacy code into why it exists and a safe refactor plan |
+| Bug | Stack trace into ranked hypotheses and repro plan |
+| Review | Code into bugs, security issues, and performance analysis |
+
+**Ship** — Convert work into shippable artifacts.
+| Lens | What it does |
+|------|-------------|
+| Story | Feature into INVEST user stories with acceptance criteria |
+| Changelog | Git diff into human-readable release notes |
+| Launch | Changelog into viral X launch thread |
+
+**Decide** — Stress-test decisions before committing.
+| Lens | What it does |
+|------|-------------|
+| Debate | Any claim into Steel-man, Devil's Advocate, Skeptic, and Supporter |
+| Pivot | Business idea into market scan, pivots, and kill criteria |
+| Premortem | Project into failure modes and preemptive mitigations |
+| Tradeoff | Decision into weighted option comparison with second-order effects |
+
+### Tools
+
+- **AI Terminal** — Direct MiMo chat with reasoning trace, history navigation (arrow keys), and streaming output.
+- **AI Workspace** — Split-pane interface: pick any lens, drop input, watch streaming output with reasoning trace. Run history on the bottom.
+- **AI Code Review** — Paste code, get severity-ranked findings (critical / warning / info) with suggested fixes.
+- **AI Brainstorm** — Enter a topic, get 12 concrete ideas across bold, practical, and wildcard categories. Mark the ones to keep, export as markdown.
+
+### Navigation
+
+Pages are split by workflow stage:
+- `/plan`, `/build`, `/ship`, `/decide` — Category pages with filtered lens grids
+- `/lenses` — Browse all 15 lenses with search and category filter
+- `/terminal` — Direct AI chat
+- `/workspace` — Multi-lens runner
+- `/tools/review` — Code review tool
+- `/tools/brainstorm` — Brainstorming board
+
+## Why MiMo V2.5 Pro?
+
+Prism is built to showcase **structured reasoning**, not chat completion. Every lens forces multi-step reasoning across a different domain — system design, adversarial debate, recursive decomposition, strategic analysis.
+
+That breadth and depth is where MiMo V2.5 Pro shines. It streams a visible reasoning trace before producing structured output, making the model's thinking process transparent.
+
+## Tech Stack
 
 - **Framework:** [Next.js 16](https://nextjs.org) (App Router) + TypeScript
 - **Styling:** Tailwind CSS v4 + custom spectrum theming
 - **Animation:** Framer Motion
-- **Icons:** Lucide
+- **Icons:** Lucide React
 - **Toasts:** Sonner
 - **Reasoning:** MiMo V2.5 Pro via Xiaomi MiMo Open Platform
 - **Deployment:** Vercel (Edge-friendly Server-Sent Events streaming)
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js 20+
@@ -85,7 +126,7 @@ MIMO_API_BASE=https://token-plan-sgp.xiaomimimo.com/v1
 MIMO_MODEL=mimo-v2.5-pro
 ```
 
-> 🔒 `.env.local` is gitignored. **Never commit real keys.**
+> `.env.local` is gitignored. Never commit real keys.
 
 ### 3. Run locally
 
@@ -93,7 +134,7 @@ MIMO_MODEL=mimo-v2.5-pro
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) — pick a lens, drop input, watch it refract.
+Open [http://localhost:3000](http://localhost:3000) — pick a lens, drop input, watch it reason.
 
 ### 4. Deploy
 
@@ -101,27 +142,38 @@ Open [http://localhost:3000](http://localhost:3000) — pick a lens, drop input,
 vercel deploy
 ```
 
-Add `MIMO_API_KEY`, `MIMO_API_BASE`, `MIMO_MODEL` as **Environment Variables** in your Vercel project settings.
+Add `MIMO_API_KEY`, `MIMO_API_BASE`, `MIMO_MODEL` as Environment Variables in your Vercel project settings.
 
-## 🏗 Architecture
+## Architecture
 
 ```
-┌───────────────────────────────────────────────────────┐
-│                    Prism Frontend                      │
-│              (Next.js App Router + Vercel)             │
-│   Lens Picker  →  Input Forms  →  Streaming Canvas    │
-└────────────────────────┬──────────────────────────────┘
+┌──────────────────────────────────────────────────────────┐
+│                    Prism Frontend                         │
+│              (Next.js App Router + Vercel)                │
+│                                                          │
+│  Landing  │  Lens Pages  │  Terminal  │  Workspace       │
+│  /plan    │  /build      │  /ship     │  /decide         │
+│  /tools/review  │  /tools/brainstorm                    │
+└────────────────────────┬─────────────────────────────────┘
                          │
-┌────────────────────────▼──────────────────────────────┐
-│              /api/reason  (SSE streaming)              │
-│   • Lens routing   • Prompt assembly                   │
-│   • Schema enforcement  • Reasoning + content split    │
-└────────────────────────┬──────────────────────────────┘
+┌────────────────────────▼─────────────────────────────────┐
+│                    API Routes (SSE)                       │
+│                                                          │
+│  /api/lens/[id]    Lens runner — prompt assembly,        │
+│                    input routing, streaming output        │
+│  /api/terminal     Direct chat — system prompt,          │
+│                    last-20-turns context window           │
+│  /api/review       Code review — severity-ranked         │
+│                    structured findings                    │
+│  /api/brainstorm   Idea generation — 12 ideas across     │
+│                    3 categories (bold/practical/wildcard) │
+└────────────────────────┬─────────────────────────────────┘
                          │
-                ┌────────▼─────────┐
-                │   MiMo V2.5 Pro  │
-                │   (api-key auth) │
-                └──────────────────┘
+               ┌─────────▼──────────┐
+               │   MiMo V2.5 Pro    │
+               │   (api-key auth)   │
+               │   streaming SSE    │
+               └────────────────────┘
 ```
 
 ### Project structure
@@ -129,37 +181,57 @@ Add `MIMO_API_KEY`, `MIMO_API_BASE`, `MIMO_MODEL` as **Environment Variables** i
 ```
 src/
 ├── app/
-│   ├── api/reason/route.ts   # SSE streaming endpoint
-│   ├── lens/[id]/page.tsx    # Dynamic lens page
-│   ├── page.tsx              # Landing
-│   ├── layout.tsx            # Root + fonts + toaster
-│   └── globals.css           # Spectrum theme
+│   ├── api/
+│   │   ├── lens/[id]/route.ts    # Lens-specific SSE endpoint
+│   │   ├── terminal/route.ts     # Direct chat SSE endpoint
+│   │   ├── review/route.ts       # Code review SSE endpoint
+│   │   └── brainstorm/route.ts   # Brainstorm SSE endpoint
+│   ├── lens/[id]/page.tsx        # Dynamic lens runner page
+│   ├── plan/page.tsx             # Plan category
+│   ├── build/page.tsx            # Build category
+│   ├── ship/page.tsx             # Ship category
+│   ├── decide/page.tsx           # Decide category
+│   ├── lenses/page.tsx           # Browse all lenses
+│   ├── terminal/page.tsx         # AI terminal chat
+│   ├── workspace/page.tsx        # Multi-lens workspace
+│   ├── tools/
+│   │   ├── review/page.tsx       # Code review tool
+│   │   └── brainstorm/page.tsx   # Brainstorm board
+│   ├── about/page.tsx
+│   ├── faq/page.tsx
+│   ├── page.tsx                  # Landing
+│   └── layout.tsx                # Root + fonts + toaster
 ├── components/
-│   ├── prism-logo.tsx        # Animated SVG prism
-│   ├── lens-card.tsx         # Grid card
-│   └── lens-runner.tsx       # Two-panel input/output runner
+│   ├── prism-logo.tsx            # Animated SVG prism
+│   ├── lens-card.tsx             # Lens grid card
+│   ├── lens-runner.tsx           # Two-panel input/output runner
+│   ├── lens-icon.tsx             # Lucide icon resolver for lenses
+│   ├── lenses-browser.tsx        # Search + filter + grouped grid
+│   └── page-shell.tsx            # Layout shell with sidebar nav
 └── lib/
-    ├── lenses.ts             # Lens catalog + system prompts
-    ├── mimo.ts               # MiMo streaming client
-    └── utils.ts              # cn() helper
+    ├── lenses.ts                 # Lens catalog + system prompts
+    ├── mimo.ts                   # MiMo streaming client (api-key auth)
+    └── utils.ts                  # cn() helper
 ```
 
-## 🎨 Design Philosophy
+## Design Philosophy
 
-- **Dark, calm, cinematic** — built for thinkers, not flashy
-- **Spectrum accent** — single visual motif (the prism) carried across logo, headings, lens accents
-- **Reasoning is the demo** — the streaming "thinking" panel is a deliberate UX choice that makes the model's depth tangible
-- **No signup friction** — try any live lens instantly
+- **Dark, calm, professional** — built for builders, not consumers
+- **Spectrum accent** — single visual motif carried across logo, headings, lens accents
+- **Reasoning is the demo** — streaming thinking panel makes model depth tangible
+- **No signup friction** — open any page, pick a lens, drop input, ship
+- **No emojis in UI** — clean iconography via Lucide React
+- **Structured outputs, not blobs** — every lens returns a ready-to-use artifact
 
-## 🤝 Contributing
+## Contributing
 
 This is currently a focused project. Feedback and bug reports are welcome via [Issues](https://github.com/XinnBlueBird/prism/issues).
 
-## 📜 License
+## License
 
 MIT — see [LICENSE](LICENSE).
 
-## 🙏 Acknowledgements
+## Acknowledgements
 
 - [MiMo Open Platform](https://platform.xiaomimimo.com) for the reasoning engine
 - [shadcn](https://ui.shadcn.com) for design inspiration
@@ -169,6 +241,6 @@ MIT — see [LICENSE](LICENSE).
 
 <div align="center">
 
-**Built with curiosity. Refract everything.**
+**Built for builders. Ship everything.**
 
 </div>
