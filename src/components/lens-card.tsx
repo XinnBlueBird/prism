@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Lock } from "lucide-react";
 import type { Lens } from "@/lib/lenses";
 import { cn } from "@/lib/utils";
+import { LensIcon } from "@/components/lens-icon";
 
 export function LensCard({ lens, index }: { lens: Lens; index: number }) {
   const isAvailable = lens.status === "available";
@@ -23,15 +24,12 @@ export function LensCard({ lens, index }: { lens: Lens; index: number }) {
           : "opacity-60 cursor-not-allowed",
       )}
     >
-      {/* Accent gradient bar */}
       <div
         className={cn(
           "absolute inset-x-0 top-0 h-px bg-gradient-to-r opacity-60",
           lens.accent,
         )}
       />
-
-      {/* Glow on hover */}
       {isAvailable && (
         <div
           className={cn(
@@ -42,7 +40,9 @@ export function LensCard({ lens, index }: { lens: Lens; index: number }) {
       )}
 
       <div className="flex items-start justify-between">
-        <span className="text-3xl">{lens.emoji}</span>
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5">
+          <LensIcon name={lens.icon} className="h-5 w-5 text-white/80" />
+        </div>
         {isAvailable ? (
           <ArrowUpRight className="h-4 w-4 text-white/30 transition-all group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         ) : (

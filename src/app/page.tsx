@@ -149,7 +149,7 @@ export default function HomePage() {
                         key={l.id}
                         className="rounded-full border border-white/10 bg-black/30 px-2 py-0.5 text-[11px] text-white/65"
                       >
-                        {l.emoji} {l.name.replace(" Lens", "")}
+                        {l.name.replace(" Lens", "")}
                       </span>
                     ))}
                   </div>

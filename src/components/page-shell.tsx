@@ -3,14 +3,60 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import {
+  Menu,
+  X,
+  LayoutDashboard,
+  Terminal as TerminalIcon,
+  Map,
+  Hammer,
+  Rocket,
+  Scale,
+  FileCode2,
+  Lightbulb,
+  Info,
+  HelpCircle,
+  Layers,
+  ExternalLink,
+} from "lucide-react";
 import { PrismLogo } from "@/components/prism-logo";
 import { cn } from "@/lib/utils";
 
-const NAV = [
-  { href: "/lenses", label: "Lenses" },
-  { href: "/about", label: "About" },
-  { href: "/faq", label: "FAQ" },
+type NavItem = { href: string; label: string; icon: React.ComponentType<{ className?: string }> };
+type NavSection = { title: string; items: NavItem[] };
+
+const SECTIONS: NavSection[] = [
+  {
+    title: "Workspace",
+    items: [
+      { href: "/workspace", label: "AI Workspace", icon: LayoutDashboard },
+      { href: "/terminal", label: "Terminal", icon: TerminalIcon },
+    ],
+  },
+  {
+    title: "Lenses",
+    items: [
+      { href: "/plan", label: "Plan", icon: Map },
+      { href: "/build", label: "Build", icon: Hammer },
+      { href: "/ship", label: "Ship", icon: Rocket },
+      { href: "/decide", label: "Decide", icon: Scale },
+      { href: "/lenses", label: "All lenses", icon: Layers },
+    ],
+  },
+  {
+    title: "Tools",
+    items: [
+      { href: "/tools/review", label: "Code Review", icon: FileCode2 },
+      { href: "/tools/brainstorm", label: "Brainstorm", icon: Lightbulb },
+    ],
+  },
+  {
+    title: "Info",
+    items: [
+      { href: "/about", label: "About", icon: Info },
+      { href: "/faq", label: "FAQ", icon: HelpCircle },
+    ],
+  },
 ];
 
 export function PageShell({
@@ -24,102 +70,126 @@ export function PageShell({
   const current = active ?? pathname;
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const isActive = (href: string) => {
+    if (href === "/") return current === "/";
+    return current === href || (current?.startsWith(href + "/") ?? false);
+  };
+
   return (
-    <div className="flex min-h-screen flex-col">
-      <header className="sticky top-0 z-50 border-b border-white/5 bg-[#0a0a0f]/75 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <Link href="/" className="flex items-center gap-2.5">
-            <PrismLogo size={26} />
-            <span className="text-base font-semibold tracking-tight">Prism</span>
-          </Link>
+    <div className="flex min-h-screen">
+      {/* Sidebar — desktop */}
+      <aside className="sticky top-0 hidden h-screen w-60 shrink-0 flex-col border-r border-white/5 bg-[#08080d]/80 backdrop-blur-md md:flex">
+        <Link href="/" className="flex items-center gap-2.5 border-b border-white/5 px-5 py-4">
+          <PrismLogo size={26} />
+          <span className="text-base font-semibold tracking-tight">Prism</span>
+        </Link>
 
-          <nav className="hidden items-center gap-1 md:flex">
-            {NAV.map((item) => {
-              const isActive = current === item.href;
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    "rounded-full px-3 py-1.5 text-sm transition",
-                    isActive
-                      ? "bg-white/10 text-white"
-                      : "text-white/60 hover:bg-white/5 hover:text-white",
-                  )}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-            <a
-              href="https://github.com/XinnBlueBird/prism"
-              target="_blank"
-              rel="noreferrer"
-              className="ml-2 flex items-center gap-1.5 rounded-full border border-white/10 px-3 py-1.5 text-xs text-white/70 hover:border-white/20 hover:text-white transition"
-            >
-              <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.18c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.24 2.75.12 3.04.73.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.4-5.27 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56C20.21 21.38 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5Z" />
-              </svg>
-              GitHub
-            </a>
-          </nav>
-
-          <button
-            onClick={() => setMobileOpen((v) => !v)}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 md:hidden"
-            aria-label="menu"
-          >
-            {mobileOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-          </button>
-        </div>
-
-        {mobileOpen && (
-          <div className="border-t border-white/5 md:hidden">
-            <div className="mx-auto max-w-6xl space-y-1 px-6 py-4">
-              {NAV.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className={cn(
-                    "block rounded-lg px-3 py-2 text-sm transition",
-                    current === item.href
-                      ? "bg-white/10 text-white"
-                      : "text-white/60 hover:bg-white/5 hover:text-white",
-                  )}
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <a
-                href="https://github.com/XinnBlueBird/prism"
-                target="_blank"
-                rel="noreferrer"
-                className="block rounded-lg px-3 py-2 text-sm text-white/60"
-              >
-                GitHub ↗
-              </a>
+        <nav className="flex-1 overflow-y-auto px-3 py-5">
+          {SECTIONS.map((section) => (
+            <div key={section.title} className="mb-6">
+              <p className="px-2 pb-2 font-mono text-[10px] uppercase tracking-[0.18em] text-white/35">
+                {section.title}
+              </p>
+              <div className="space-y-0.5">
+                {section.items.map((item) => {
+                  const Icon = item.icon;
+                  const act = isActive(item.href);
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={cn(
+                        "flex items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-sm transition",
+                        act
+                          ? "bg-white/10 text-white"
+                          : "text-white/55 hover:bg-white/5 hover:text-white",
+                      )}
+                    >
+                      <Icon className="h-3.5 w-3.5" />
+                      <span>{item.label}</span>
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        )}
-      </header>
+          ))}
+        </nav>
 
-      <main className="flex-1">{children}</main>
+        <a
+          href="https://github.com/XinnBlueBird/prism"
+          target="_blank"
+          rel="noreferrer"
+          className="m-3 flex items-center justify-between rounded-lg border border-white/8 px-3 py-2 text-xs text-white/55 transition hover:border-white/20 hover:text-white"
+        >
+          <span>GitHub</span>
+          <ExternalLink className="h-3 w-3" />
+        </a>
+      </aside>
 
-      <footer className="border-t border-white/5">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 py-10 text-xs text-white/40 sm:flex-row">
-          <div className="flex items-center gap-2">
-            <PrismLogo size={18} />
-            <span>Prism · The AI workspace for builders · Powered by MiMo V2.5 Pro</span>
+      {/* Mobile top bar */}
+      <div className="flex min-w-0 flex-1 flex-col">
+        <header className="sticky top-0 z-50 border-b border-white/5 bg-[#0a0a0f]/85 backdrop-blur-md md:hidden">
+          <div className="flex items-center justify-between px-4 py-3">
+            <Link href="/" className="flex items-center gap-2">
+              <PrismLogo size={22} />
+              <span className="text-sm font-semibold">Prism</span>
+            </Link>
+            <button
+              onClick={() => setMobileOpen((v) => !v)}
+              className="flex h-9 w-9 items-center justify-center rounded-lg border border-white/10"
+              aria-label="menu"
+            >
+              {mobileOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            </button>
           </div>
-          <div className="flex flex-wrap items-center gap-4">
-            <Link href="/lenses" className="hover:text-white">Lenses</Link>
-            <Link href="/about" className="hover:text-white">About</Link>
-            <Link href="/faq" className="hover:text-white">FAQ</Link>
+
+          {mobileOpen && (
+            <div className="border-t border-white/5 px-4 py-4">
+              {SECTIONS.map((section) => (
+                <div key={section.title} className="mb-5">
+                  <p className="pb-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-white/35">
+                    {section.title}
+                  </p>
+                  <div className="space-y-0.5">
+                    {section.items.map((item) => {
+                      const Icon = item.icon;
+                      const act = isActive(item.href);
+                      return (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          onClick={() => setMobileOpen(false)}
+                          className={cn(
+                            "flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm transition",
+                            act
+                              ? "bg-white/10 text-white"
+                              : "text-white/60 hover:bg-white/5 hover:text-white",
+                          )}
+                        >
+                          <Icon className="h-4 w-4" />
+                          {item.label}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </header>
+
+        <main className="flex-1 min-w-0">{children}</main>
+
+        <footer className="border-t border-white/5">
+          <div className="flex flex-col items-center justify-between gap-3 px-6 py-6 text-xs text-white/40 sm:flex-row">
+            <div className="flex items-center gap-2">
+              <PrismLogo size={16} />
+              <span>Prism · The AI workspace for builders · Powered by MiMo V2.5 Pro</span>
+            </div>
             <span>© {new Date().getFullYear()}</span>
           </div>
-        </div>
-      </footer>
+        </footer>
+      </div>
     </div>
   );
 }

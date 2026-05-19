@@ -26,7 +26,10 @@ export type Lens = {
   name: string;
   tagline: string;
   description: string;
+  /** @deprecated Never rendered in UI — kept for type compat */
   emoji: string;
+  /** Lucide-react icon component name */
+  icon: string;
   accent: string;
   category: LensCategory;
   status: LensStatus;
@@ -37,23 +40,27 @@ export type Lens = {
 
 export const CATEGORIES: Record<
   LensCategory,
-  { label: string; description: string }
+  { label: string; description: string; icon: string }
 > = {
   plan: {
     label: "Plan",
     description: "Turn vague ideas into actionable specs and roadmaps.",
+    icon: "Map",
   },
   build: {
     label: "Build",
     description: "Reason through code, architecture, and engineering choices.",
+    icon: "Hammer",
   },
   ship: {
     label: "Ship",
     description: "Convert work into stories, tickets, RFCs, and changelogs.",
+    icon: "Rocket",
   },
   decide: {
     label: "Decide",
     description: "Stress-test decisions before you commit to them.",
+    icon: "Scale",
   },
 };
 
@@ -65,7 +72,8 @@ export const LENSES: Lens[] = [
     tagline: "Plain idea → production spec",
     description:
       "Drop a plain-English idea. Get a complete PRD: user stories, architecture, data model, API endpoints, and a ticket list ready to ship.",
-    emoji: "📐",
+    emoji: "",
+    icon: "Ruler",
     accent: "from-cyan-500 to-blue-600",
     category: "plan",
     status: "available",
@@ -102,7 +110,8 @@ export const LENSES: Lens[] = [
     tagline: "Vague goal → recursive plan",
     description:
       "Drop a vague goal. Get a recursive task tree, dependency map, today's three things, and kill criteria for when to abandon.",
-    emoji: "🧩",
+    emoji: "",
+    icon: "ListTree",
     accent: "from-emerald-500 to-green-600",
     category: "plan",
     status: "available",
@@ -142,7 +151,8 @@ export const LENSES: Lens[] = [
     tagline: "Vision → quarterly roadmap",
     description:
       "From product vision to a Now / Next / Later roadmap with bets, milestones, and success metrics. Built for solo founders and small teams.",
-    emoji: "🗺️",
+    emoji: "",
+    icon: "Map",
     accent: "from-teal-500 to-emerald-600",
     category: "plan",
     status: "available",
@@ -179,7 +189,8 @@ export const LENSES: Lens[] = [
     tagline: "Goal → measurable OKRs",
     description:
       "Turn a fuzzy quarterly goal into objectives + measurable key results, anti-goals, and weekly check-in cadence.",
-    emoji: "🎯",
+    emoji: "",
+    icon: "Target",
     accent: "from-violet-500 to-purple-600",
     category: "plan",
     status: "available",
@@ -219,7 +230,8 @@ export const LENSES: Lens[] = [
     tagline: "Engineering proposal in minutes",
     description:
       "Draft a complete engineering RFC: motivation, design, alternatives considered, trade-offs, migration plan, and open questions.",
-    emoji: "📝",
+    emoji: "",
+    icon: "FileText",
     accent: "from-blue-500 to-indigo-600",
     category: "build",
     status: "available",
@@ -258,7 +270,8 @@ export const LENSES: Lens[] = [
     tagline: "Inherit code → understand the why",
     description:
       "Paste legacy code. Get the why behind it, hidden assumptions, risk map, and a safe step-by-step refactor plan.",
-    emoji: "🏛️",
+    emoji: "",
+    icon: "Landmark",
     accent: "from-stone-400 to-zinc-500",
     category: "build",
     status: "available",
@@ -292,7 +305,8 @@ export const LENSES: Lens[] = [
     tagline: "Symptom → root cause",
     description:
       "Drop a bug report, error log, or stack trace. Get hypotheses ranked by likelihood, diagnostic steps, and a minimal repro plan.",
-    emoji: "🐛",
+    emoji: "",
+    icon: "Bug",
     accent: "from-rose-500 to-pink-600",
     category: "build",
     status: "available",
@@ -329,7 +343,8 @@ export const LENSES: Lens[] = [
     tagline: "Diff → senior code review",
     description:
       "Paste a diff or PR. Get review comments grouped by severity, with concrete suggestions and a final ship/block verdict.",
-    emoji: "👁️",
+    emoji: "",
+    icon: "Eye",
     accent: "from-amber-500 to-orange-600",
     category: "build",
     status: "available",
@@ -351,9 +366,9 @@ export const LENSES: Lens[] = [
     systemPrompt: `You are Prism's Review Lens, a senior code reviewer. Be specific, kind, and unflinching. Group comments by Blocking / Recommended / Nit. Always close with a clear ship/block verdict and rationale.`,
     outputFormat: `Return markdown:
 ## Summary of Change (1 sentence)
-## 🔴 Blocking (must fix before merge)
-## 🟡 Recommended (strongly encouraged)
-## ⚪ Nits (style, minor)
+## Blocking (must fix before merge)
+## Recommended (strongly encouraged)
+## Nits (style, minor)
 ## Verdict: SHIP / NEEDS WORK / BLOCK
 ## Rationale`,
   },
@@ -365,7 +380,8 @@ export const LENSES: Lens[] = [
     tagline: "Feature → user stories + acceptance criteria",
     description:
       "Convert a feature idea into well-formed user stories with explicit acceptance criteria and edge cases ready for sprint planning.",
-    emoji: "📖",
+    emoji: "",
+    icon: "BookOpen",
     accent: "from-fuchsia-500 to-pink-600",
     category: "ship",
     status: "available",
@@ -402,7 +418,8 @@ export const LENSES: Lens[] = [
     tagline: "Commits → user-facing changelog",
     description:
       "Paste commit messages or PR titles. Get a polished, user-facing changelog organized by Added / Changed / Fixed.",
-    emoji: "📦",
+    emoji: "",
+    icon: "Package",
     accent: "from-green-500 to-emerald-600",
     category: "ship",
     status: "available",
@@ -424,10 +441,10 @@ export const LENSES: Lens[] = [
     systemPrompt: `You are Prism's Changelog Lens. Translate technical commit messages into a user-facing changelog. Cluster related items. Drop chore/internal noise. Use the active voice.`,
     outputFormat: `Return markdown:
 # vX.Y.Z — <date>
-## ✨ Added
-## 🔧 Changed
-## 🐛 Fixed
-## 🧹 Internal (collapsed)
+## Added
+## Changed
+## Fixed
+## Internal (collapsed)
 ## Migration Notes (if any)`,
   },
   {
@@ -436,7 +453,8 @@ export const LENSES: Lens[] = [
     tagline: "Feature → launch thread + assets",
     description:
       "Convert a launch into a viral-shaped X thread with hook tweet, body beats, carousel summary, and a pinned CTA.",
-    emoji: "🚀",
+    emoji: "",
+    icon: "Rocket",
     accent: "from-orange-500 to-red-600",
     category: "ship",
     status: "available",
@@ -465,13 +483,13 @@ export const LENSES: Lens[] = [
     ],
     systemPrompt: `You are Prism's Launch Lens, a viral-thread engineer for builder launches. Reason about which insight is the strongest hook. Each tweet must stand alone and earn the next read. Avoid hype words.`,
     outputFormat: `Return markdown:
-## 🪝 Hook Tweet (≤ 240 chars)
-## 🧵 Thread Body
+## Hook Tweet (≤ 240 chars)
+## Thread Body
 1/ ...
 2/ ...
 3/ ...
-## 🎨 Carousel Summary (5 slide titles)
-## 📌 Pinned CTA Tweet`,
+## Carousel Summary (5 slide titles)
+## Pinned CTA Tweet`,
   },
 
   // ─────────── DECIDE ───────────
@@ -481,7 +499,8 @@ export const LENSES: Lens[] = [
     tagline: "Argue with yourself before reality argues with you",
     description:
       "Submit any decision. Get four personas — Steel-man, Devil's Advocate, Skeptic, Supporter — each making their strongest case.",
-    emoji: "⚔️",
+    emoji: "",
+    icon: "Swords",
     accent: "from-rose-500 to-red-600",
     category: "decide",
     status: "available",
@@ -502,11 +521,11 @@ export const LENSES: Lens[] = [
     ],
     systemPrompt: `You are Prism's Debate Lens. Given a claim, produce four distinct, intellectually honest personas. Each persona must reason from its strongest position — no straw men.`,
     outputFormat: `Return markdown:
-## 🛡️ Steel-man (best version of the argument)
-## 😈 Devil's Advocate (strongest opposition)
-## 🤔 Skeptic (what's missing or unproven)
-## ✊ Supporter (why this matters and works)
-## 📍 Synthesis (where the truth likely sits)`,
+## Steel-man (best version of the argument)
+## Devil's Advocate (strongest opposition)
+## Skeptic (what's missing or unproven)
+## Supporter (why this matters and works)
+## Synthesis (where the truth likely sits)`,
   },
   {
     id: "pivot",
@@ -514,7 +533,8 @@ export const LENSES: Lens[] = [
     tagline: "Founder's thinking partner",
     description:
       "Stress-test a business idea. Get market scan, five pivot directions, TAM bracket, and explicit kill criteria.",
-    emoji: "🔄",
+    emoji: "",
+    icon: "RefreshCw",
     accent: "from-yellow-500 to-amber-600",
     category: "decide",
     status: "available",
@@ -556,7 +576,8 @@ export const LENSES: Lens[] = [
     tagline: "Imagine it failed → fix it now",
     description:
       "Imagine your project fails in 6 months. Get the most likely failure modes, ranked by probability, with mitigations you can apply today.",
-    emoji: "💀",
+    emoji: "",
+    icon: "Skull",
     accent: "from-zinc-500 to-slate-600",
     category: "decide",
     status: "available",
@@ -599,7 +620,8 @@ export const LENSES: Lens[] = [
     tagline: "A vs B → clear-headed decision matrix",
     description:
       "Compare two options across the dimensions that actually matter. Get a weighted decision matrix and a concrete recommendation.",
-    emoji: "⚖️",
+    emoji: "",
+    icon: "Scale",
     accent: "from-indigo-500 to-violet-700",
     category: "decide",
     status: "available",
