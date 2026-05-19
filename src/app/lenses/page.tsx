@@ -1,10 +1,11 @@
-import { LENSES } from "@/lib/lenses";
-import { LensCard } from "@/components/lens-card";
 import { PageShell } from "@/components/page-shell";
+import { LensesBrowser } from "@/components/lenses-browser";
+import { LENSES } from "@/lib/lenses";
 
 export const metadata = {
   title: "Lenses · Prism",
-  description: "All ten Prism reasoning lenses — pick the right cognitive frame for your input.",
+  description:
+    "Fifteen specialized AI lenses for builders. Plan, build, ship, decide — powered by MiMo V2.5 Pro.",
 };
 
 export default function LensesPage() {
@@ -13,7 +14,7 @@ export default function LensesPage() {
   return (
     <PageShell active="/lenses">
       <section className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
-        <div className="mb-12 flex items-end justify-between gap-6 max-md:flex-col max-md:items-start">
+        <div className="mb-10 flex items-end justify-between gap-6 max-md:flex-col max-md:items-start">
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.18em] text-white/40">
               The collection
@@ -22,8 +23,8 @@ export default function LensesPage() {
               Choose your <span className="spectrum-text">lens</span>
             </h1>
             <p className="mt-3 max-w-xl text-white/60">
-              Each lens applies a distinct cognitive frame to whatever you drop
-              in. Same engine, different reasoning shape.
+              Fifteen specialized cognitive frames for builders. Same MiMo
+              engine, different reasoning shape.
             </p>
           </div>
           <div className="flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/5 px-3 py-1.5 text-xs text-emerald-300/90">
@@ -32,11 +33,7 @@ export default function LensesPage() {
           </div>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {LENSES.map((lens, i) => (
-            <LensCard key={lens.id} lens={lens} index={i} />
-          ))}
-        </div>
+        <LensesBrowser />
       </section>
     </PageShell>
   );

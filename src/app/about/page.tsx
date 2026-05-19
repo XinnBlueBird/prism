@@ -5,7 +5,7 @@ import { PageShell } from "@/components/page-shell";
 export const metadata = {
   title: "About · Prism",
   description:
-    "Prism is a reasoning canvas built on MiMo V2.5 Pro — the philosophy, the architecture, and what's coming next.",
+    "Prism is the AI workspace for builders. Philosophy, architecture, and what's coming next.",
 };
 
 export default function AboutPage() {
@@ -16,89 +16,103 @@ export default function AboutPage() {
           About Prism
         </p>
         <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
-          A reasoning canvas, not a chat box.
+          The AI workspace for builders.
         </h1>
         <p className="mt-6 text-lg leading-relaxed text-white/65">
-          Most AI products today look the same — a text input, a reply bubble,
-          a stop button. Powerful models reduced to chat. Prism is a deliberate
-          attempt to design AI surfaces around <em>how</em> we actually think:
-          structured, multi-step, with different shapes for different jobs.
+          Most AI tools are chat boxes. Open input, blob output, you do the
+          structural work. Prism is built for a different reality —{" "}
+          <strong className="text-white/85">builders ship structured artifacts</strong>:
+          PRDs, RFCs, OKRs, ticket lists, decision matrices. Prism gives those
+          artifacts a first-class home, with MiMo V2.5 Pro reasoning behind
+          every output.
         </p>
 
         <div className="mt-12 space-y-12">
-          <Section
-            kicker="Philosophy"
-            title="Reasoning has shape"
-          >
+          <Section kicker="Who it's for" title="Solo founders. Indie hackers. Small teams.">
             <p>
-              An on-chain investigation looks nothing like a refactor plan. A
-              recursive task tree looks nothing like a paper review. Yet most AI
-              tools collapse all of these into the same chat shape — leaving the
-              user to do the structural work themselves.
+              Prism is built for the people closest to the metal — the ones
+              writing the spec and the code, running their own sprint planning,
+              deciding their own architecture. Not for enterprises with a PM
+              org. Not for chatters who just want a smarter ChatGPT.
             </p>
             <p>
-              Prism gives reasoning the surface it deserves. Each <strong>lens</strong> is
-              a cognitive frame — a system prompt + output schema + dedicated UI
-              — purpose-built for one kind of thinking. The same MiMo V2.5 Pro
-              engine produces ten different shapes of insight, depending on which
+              If you ship product and the bottleneck isn&apos;t typing speed but{" "}
+              <em>structuring your thinking fast enough</em>, Prism is for you.
+            </p>
+          </Section>
+
+          <Section kicker="Philosophy" title="Reasoning has shape">
+            <p>
+              A spec looks nothing like a debug session. An OKR sheet looks
+              nothing like a launch thread. Yet most AI tools collapse all of
+              these into the same chat shape, leaving you to format, structure,
+              and re-prompt until you get what you actually need.
+            </p>
+            <p>
+              Prism gives every common builder artifact its own{" "}
+              <strong>lens</strong> — a tuned system prompt, an output schema,
+              and a dedicated input UI. The same MiMo V2.5 Pro engine produces
+              fifteen different shapes of structured output, depending on which
               lens you pick.
             </p>
           </Section>
 
-          <Section kicker="Surfaces" title="Three ways in">
+          <Section kicker="Workflow stages" title="Plan · Build · Ship · Decide">
             <p>
-              <strong>Lenses</strong> are for structure: drop input, pick a
-              frame, get a structured output you can copy and ship.{" "}
-              <strong>Terminal</strong> is for speed: a focused console for
-              direct conversation when a lens would be overkill.{" "}
-              <strong>Studio</strong> is for media: paste a YouTube, Spotify,
-              SoundCloud, or TikTok link — preview inline, save audio or video.
+              Lenses are organized around the four stages of any builder loop:
             </p>
-            <p>
-              Three surfaces, one engine, zero context switches. They all live
-              under the same roof because the same model powers them, even
-              though the gestures are different.
-            </p>
+            <ul className="list-disc space-y-2 pl-5">
+              <li>
+                <strong>Plan</strong> — Spec, Task, Roadmap, OKR. Turn vague
+                ideas into actionable artifacts.
+              </li>
+              <li>
+                <strong>Build</strong> — RFC, Legacy, Bug, Review. Reason
+                through code and architecture.
+              </li>
+              <li>
+                <strong>Ship</strong> — Story, Changelog, Launch. Convert work
+                into stories, releases, and launch threads.
+              </li>
+              <li>
+                <strong>Decide</strong> — Debate, Pivot, Premortem, Tradeoff.
+                Stress-test decisions before you commit.
+              </li>
+            </ul>
           </Section>
 
           <Section kicker="Engine" title="Why MiMo V2.5 Pro">
             <p>
               Prism is intentionally built on a model tuned for reasoning rather
               than chat. MiMo V2.5 Pro streams a visible{" "}
-              <strong>reasoning trace</strong> before its final answer, which we
-              expose in the lens UI as a separate panel. Watching a model think
-              isn&apos;t just a demo flourish — it changes what users notice and
-              trust about the output.
+              <strong>reasoning trace</strong> before its final answer — we
+              expose this trace in the lens UI as a separate panel.
             </p>
             <p>
-              This also means Prism functions as a stress-test of breadth: ten
-              very different domains (on-chain analysis, debate synthesis,
-              system design, recursive decomposition, dream interpretation)
-              passing through one engine.
+              For builders, this matters. Watching the model reason about
+              trade-offs before producing the spec is the difference between
+              trusting the output and re-doing the work.
             </p>
           </Section>
 
           <Section kicker="Design" title="Calm. Cinematic. Focused.">
             <p>
-              The visual language is dark with a thin spectrum accent — the
-              prism motif refracting one signal into many. We avoided the tropes
-              of generic AI chat UI (gradient blobs, anime mascots, exclamation
-              points). Prism is meant to feel like a tool for thinkers, not a
-              toy.
+              Dark interface, thin spectrum accent, restrained motion. The
+              prism motif refracts one signal into many — it&apos;s the visual
+              language of what the product does.
             </p>
             <p>
-              Typography uses Inter for UI and JetBrains Mono for technical
-              surfaces (terminal, code, output). Animations are subtle — no
-              motion that doesn&apos;t serve a function.
+              Inter for UI, JetBrains Mono for technical surfaces. No mascots,
+              no exclamation points, no &quot;Hey there!&quot; greetings. A tool
+              for thinkers, not a toy.
             </p>
           </Section>
 
           <Section kicker="Privacy" title="Yours stays yours">
             <p>
-              Inputs and outputs are not stored server-side. Prism makes a single
-              streaming request to MiMo per submission and forgets it. There is
-              no signup, no analytics fingerprinting, no chat history database.
-              Local history (when you opt in) lives in your browser only.
+              Inputs and outputs are not stored server-side. Prism makes a
+              single streaming request to MiMo per submission and forgets it.
+              No signup, no analytics fingerprinting, no chat history database.
             </p>
           </Section>
 
@@ -114,28 +128,46 @@ export default function AboutPage() {
               >
                 GitHub
               </a>
-              . Issues, ideas, and pull requests are welcome.
+              . Issues and pull requests welcome.
             </p>
           </Section>
 
-          <Section kicker="Roadmap" title="What's next">
+          <Section kicker="Roadmap" title="What's coming">
             <ul className="list-disc space-y-2 pl-5">
-              <li>Compare mode: run the same input through two lenses side by side.</li>
-              <li>Lens chaining: pipe one lens&apos;s output into another.</li>
-              <li>Persistent (opt-in) history with vector search.</li>
-              <li>Export to Notion, Markdown, JSON, PDF.</li>
-              <li>Live RPC integration for Chain Lens (real on-chain grounding).</li>
-              <li>API access for embedding Prism reasoning in other apps.</li>
+              <li>
+                <strong>Lens chaining</strong> — pipe Spec Lens output directly
+                into Story Lens, then into Launch Lens.
+              </li>
+              <li>
+                <strong>Workspaces</strong> — opt-in persistent project context
+                across lens runs.
+              </li>
+              <li>
+                <strong>Compare mode</strong> — same input through two lenses,
+                side by side.
+              </li>
+              <li>
+                <strong>Export</strong> — Notion, Markdown, JSON, GitHub Issues
+                bulk import.
+              </li>
+              <li>
+                <strong>API access</strong> — embed Prism reasoning in your own
+                product.
+              </li>
+              <li>
+                <strong>Team mode</strong> — share lens runs with your
+                co-builder.
+              </li>
             </ul>
           </Section>
         </div>
 
         <div className="mt-16 rounded-3xl border border-white/10 bg-white/[0.02] p-8 text-center">
           <h3 className="text-2xl font-semibold tracking-tight">
-            Ready to try?
+            Ready to ship faster?
           </h3>
           <p className="mt-2 text-white/60">
-            Pick a lens, drop input, watch it refract.
+            Pick a lens, drop input, paste the output into your repo.
           </p>
           <div className="mt-6 flex justify-center gap-3">
             <Link
